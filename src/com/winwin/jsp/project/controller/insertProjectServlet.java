@@ -33,19 +33,24 @@ public class insertProjectServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String title = request.getParameter("title"); // ÇÁ·ÎÁ§Æ® Á¦¸ñ
-		String type = request.getParameter("project_type"); // ÇÁ·ÎÁ§Æ® ÁøÇà¹æ½Ä
-		String category = String.join(", ",request.getParameter("category")); // ÇÁ·ÎÁ§Æ® Ä«Å×°í¸®
-		String subcategory_ch = String.join(", ", request.getParameterValues("subcategory_ch")); // ÇÁ·ÎÁ§Æ® »ó¼¼ Ä«Å×°í¸®
-		String description = request.getParameter("description"); // »ó¼¼ ¾÷¹« ³»¿ë
-//		String cost = request.getParameter("cost"); // ÇÁ·ÎÁ§Æ® ¿¹»ê
-		String start = request.getParameter("launch_date"); // ¿¹»ó ½ÃÀÛÀÏ
-		String end = request.getParameter("deadline"); // °ø°í ¸¶°¨ÀÏ
-		String go = request.getParameter("ra_bu"); // ¿¹»ó ÁøÇà ±â°£
-		String conf1 = request.getParameter("conf1"); // ¿¹»ê ÇùÀÇ1
-		String conf2 = request.getParameter("conf2"); // ¿¹»ê ÇùÀÇ2
+		String title = request.getParameter("title"); // í”„ë¡œì íŠ¸ ì œëª©
+		String type = request.getParameter("project_type"); // í”„ë¡œì íŠ¸ ì§„í–‰ë°©ì‹
+		String category = String.join(", ",request.getParameter("category")); // í”„ë¡œì íŠ¸ ì¹´í…Œê³ ë¦¬
+		String subcategory_ch = String.join(", ", request.getParameterValues("subcategory_ch")); // í”„ë¡œì íŠ¸ ìƒì„¸ ì¹´í…Œê³ ë¦¬
+		String description = request.getParameter("description"); // ìƒì„¸ ì—…ë¬´ ë‚´ìš©
+		String start = request.getParameter("launch_date"); // ì˜ˆìƒ ì‹œì‘ì¼
+		String end = request.getParameter("deadline"); // ê³µê³  ë§ˆê°ì¼
+		String go = request.getParameter("ra_bu"); // ì˜ˆìƒ ì§„í–‰ ê¸°ê°„
+		String conf1 = request.getParameter("conf1"); // ì˜ˆì‚° í˜‘ì˜1
+		String conf2 = request.getParameter("conf2"); // ì˜ˆì‚° í˜‘ì˜2
 		
-		System.out.println("³¯Â¥ Àü´Ş È®ÀÎ : " + start);
+		String devel = request.getParameter("count_number"); // ê°œë°œì ìˆ˜ 
+		String indiv_cost = request.getParameter("cost"); // í”„ë¡œì íŠ¸ ì˜ˆì‚°
+		
+		int pdevel = Integer.parseInt(devel);
+		int pindiv_cost = Integer.parseInt(indiv_cost);
+		int cost = pdevel*pindiv_cost;
+		System.out.println("ë‚ ì§œ ì „ë‹¬ í™•ì¸ : " + start);
 		
 		if(conf1 !="" && conf1!=null) {
 			
@@ -54,7 +59,7 @@ public class insertProjectServlet extends HttpServlet {
 		Date writeDate1 = null;
 		
 		if(start !="" && start!= null) {
-			// ³¯Â¥°¡ µé¾î ¿ÔÀ» ¶§
+			// ë‚ ì§œê°€ ë“¤ì–´ ì™”ì„ ë•Œ
 			//2020-01-30 --> 2020, 1, 30
 			String[] dateArr1 = start.split("-");
 			int[] intArr1 = new int[dateArr1.length];
@@ -69,16 +74,16 @@ public class insertProjectServlet extends HttpServlet {
 					intArr1[0],intArr1[1]-1,intArr1[2]).getTimeInMillis());
 				
 		}else {
-			// ³¯Â¥°¡ µé¾î¿ÀÁö ¾ÊÀ¸¸é 
+			// ë‚ ì§œê°€ ë“¤ì–´ì˜¤ì§€ ì•Šìœ¼ë©´ 
 			writeDate1 = new Date(new GregorianCalendar().getTimeInMillis());
 		}
 		
-System.out.println("³¯Â¥ Àü´Ş È®ÀÎ : " + end);
+System.out.println("ë‚ ì§œ ì „ë‹¬ í™•ì¸ : " + end);
 		
 		Date writeDate2 = null;
 		
 		if(end !="" && end!= null) {
-			// ³¯Â¥°¡ µé¾î ¿ÔÀ» ¶§
+			// ë‚ ì§œê°€ ë“¤ì–´ ì™”ì„ ë•Œ
 			//2020-01-30 --> 2020, 1, 30
 			String[] dateArr2 = end.split("-");
 			int[] intArr2 = new int[dateArr2.length];
@@ -92,23 +97,23 @@ System.out.println("³¯Â¥ Àü´Ş È®ÀÎ : " + end);
 					intArr2[0],intArr2[1]-1,intArr2[2]).getTimeInMillis());
 			
 		}else {
-			// ³¯Â¥°¡ µé¾î¿ÀÁö ¾ÊÀ¸¸é 
+			// ë‚ ì§œê°€ ë“¤ì–´ì˜¤ì§€ ì•Šìœ¼ë©´ 
 			writeDate2 = new Date(new GregorianCalendar().getTimeInMillis());
 		}
 		
-		// ¿¹»ê Ãß°¡ ÇÊ¿ä
-		Project p = new Project(title,type,category,subcategory_ch,description,writeDate1,writeDate2,go,conf1,conf2);
-		System.out.println("ÇÁ·ÎÁ§Æ® È®ÀÎ : " + p);
+		// ì˜ˆì‚° ì¶”ê°€ í•„ìš”
+		Project p = new Project(title,type,category,subcategory_ch,description,cost,writeDate1,writeDate2,go,conf1,conf2);
+		System.out.println("í”„ë¡œì íŠ¸ í™•ì¸ : " + p);
 		
 		projectService ps = new projectService();
 		
 		try {
 			ps.insertProject(p);
-			System.out.println("ÇÁ·ÎÁ§Æ® µî·Ï ¿Ï·á!");
+			System.out.println("í”„ë¡œì íŠ¸ ë“±ë¡ ì™„ë£Œ!");
 			
 			response.sendRedirect("/semi/index.jsp");
 		} catch (projectException e) {
-			request.setAttribute("msg", "ÇÁ·ÎÁ§Æ® µî·Ï Áß ¿¡·¯ ¹ß»ı!!");
+			request.setAttribute("msg", "í”„ë¡œì íŠ¸ ë“±ë¡ ì¤‘ ì—ëŸ¬ ë°œìƒ!!");
 			request.setAttribute("exception",e);
 			
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);

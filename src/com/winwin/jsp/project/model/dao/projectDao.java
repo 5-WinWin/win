@@ -30,7 +30,7 @@ public class projectDao {
 	}
 
 	/**
-	 * ÇÁ·ÎÁ§Æ® µî·Ï ¸Þ¼Òµå
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ ï¿½Þ¼Òµï¿½
 	 * @param con
 	 * @param p
 	 * @return
@@ -42,7 +42,7 @@ public class projectDao {
 		
 		try {
 			String sql = prop.getProperty("insertProject");
-			
+			System.out.println(sql);
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setString(1, p.getPtitle());
@@ -50,17 +50,19 @@ public class projectDao {
 			pstmt.setString(3, p.getPtype());
 			pstmt.setString(4, p.getPdetail());
 			pstmt.setString(5, p.getPcotx());
-			pstmt.setInt(6, 1);
+			pstmt.setInt(6, p.getPcost());
 			pstmt.setDate(7, p.getPstart());
 			pstmt.setDate(8, p.getPend());
 			pstmt.setString(9, p.getPgo());
 			pstmt.setString(10, p.getPmodwtr());
 			pstmt.setInt(11, 1);
+			pstmt.setString(12, p.getConf1());
+			pstmt.setString(13, p.getConf2());
 			
-			
+			result = pstmt.executeUpdate();
 			
 		}catch(SQLException e) {
-			e.printStackTrace();
+			throw new projectException(e.getMessage());
 		}finally {
 			close(pstmt);
 		}

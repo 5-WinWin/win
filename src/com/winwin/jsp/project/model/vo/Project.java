@@ -8,22 +8,22 @@ public class Project implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 2244802554517727050L;
-	private int pno; // ÇÁ·ÎÁ§Æ® ¹øÈ£
-	private Date penroll; // µî·Ï³¯Â¥
-	private String ptitle; // ÇÁ·ÎÁ§Æ®¸í
-	private String pbang; // ±¸ºĞ(¿ÜÁÖ or »óÁÖ)
-	private String ptype; // ºĞ·ù 
-	private String pdetail; // »ó¼¼ºĞ·ù
-	private String pcotx; // ³»¿ë
-	private int pcost; // ¿¹»óºñ¿ë
-	private Date pstart; //¿¹»ó½ÃÀÛÀÏ
-	private Date pend; // ¿¹»ó¸¶°¨ÀÏ
-	private String pgo; // ÁøÇà±â°£
-	private Date pmodate; // ¼öÁ¤³¯Â¥
-	private String pmodwtr; // ¼öÁ¤ÀÛ¼ºÀÚ
-	private int cno; // ±â¾÷ ¹øÈ£
-	private String conf1; // ¿¹»ê ÇùÀÇ 
-	private String conf2; // Âø¼öÀÏÀÚ ÇùÀÇ 
+	private int pno; // í”„ë¡œì íŠ¸ ë²ˆí˜¸
+	private Date penroll; // ë“±ë¡ë‚ ì§œ
+	private String ptitle; // í”„ë¡œì íŠ¸ëª…
+	private String pbang; // êµ¬ë¶„
+	private String ptype; // ë¶„ë¥˜
+	private String pdetail; // ìƒì„¸ë¶„ë¥˜
+	private String pcotx; // ë‚´ìš©
+	private int pcost; // ì˜ˆìƒë¹„ìš©
+	private Date pstart; //ì˜ˆìƒì‹œì‘ì¼
+	private Date pend; // ì˜ˆìƒë§ˆê°ì¼
+	private String pgo; // ì§„í–‰ê¸°ê°„
+	private Date pmodate; // ìˆ˜ì •ë‚ ì§œ
+	private String pmodwtr; // ìˆ˜ì •ì‘ì„±ì
+	private int cno; // ê¸°ì—… ë²ˆí˜¸
+	private String conf1; // ì˜ˆì‚° í˜‘ì˜
+	private String conf2; // ì°©ìˆ˜ ì¼ì í˜‘ì˜
 	public Project(String ptitle, String pbang, String ptype, String pdetail, String pcotx, Date pstart, Date pend,
 			String pgo, String conf1, String conf2) {
 		super();
@@ -38,6 +38,23 @@ public class Project implements Serializable {
 		this.conf1 = conf1;
 		this.conf2 = conf2;
 	}
+	
+	public Project(String ptitle, String pbang, String ptype, String pdetail, String pcotx, int pcost, Date pstart,
+			Date pend, String pgo, String conf1, String conf2) {
+		super();
+		this.ptitle = ptitle;
+		this.pbang = pbang;
+		this.ptype = ptype;
+		this.pdetail = pdetail;
+		this.pcotx = pcotx;
+		this.pcost = pcost;
+		this.pstart = pstart;
+		this.pend = pend;
+		this.pgo = pgo;
+		this.conf1 = conf1;
+		this.conf2 = conf2;
+	}
+
 	public String getConf1() {
 		return conf1;
 	}
