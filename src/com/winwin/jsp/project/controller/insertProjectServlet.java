@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.winwin.jsp.project.model.exception.projectException;
-import com.winwin.jsp.project.model.service.projectService;
+import com.winwin.jsp.project.model.service.ProjectService;
 import com.winwin.jsp.project.model.vo.Project;
 
 /**
@@ -35,7 +35,7 @@ public class insertProjectServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String title = request.getParameter("title"); // 프로젝트 제목
 		String type = request.getParameter("project_type"); // 프로젝트 진행방식
-		String category = String.join(", ",request.getParameter("category")); // 프로젝트 카테고리
+		String category = String.join(", ",request.getParameterValues("category")); // 프로젝트 카테고리
 		String subcategory_ch = String.join(", ", request.getParameterValues("subcategory_ch")); // 프로젝트 상세 카테고리
 		String description = request.getParameter("description"); // 상세 업무 내용
 		String start = request.getParameter("launch_date"); // 예상 시작일
@@ -52,10 +52,10 @@ public class insertProjectServlet extends HttpServlet {
 		int cost = pdevel*pindiv_cost;
 		System.out.println("날짜 전달 확인 : " + start);
 		
-		if(conf1 !="" && conf1!=null) {
-			
-		}
-		
+//		if(conf1 !="" && conf1!=null) {
+//			
+//		}
+		 
 		Date writeDate1 = null;
 		
 		if(start !="" && start!= null) {
@@ -78,8 +78,8 @@ public class insertProjectServlet extends HttpServlet {
 			writeDate1 = new Date(new GregorianCalendar().getTimeInMillis());
 		}
 		
-System.out.println("날짜 전달 확인 : " + end);
-		
+		System.out.println("날짜 전달 확인 : " + end);
+		System.out.println("프로젝트 카테고리 : " + category);
 		Date writeDate2 = null;
 		
 		if(end !="" && end!= null) {
@@ -105,7 +105,7 @@ System.out.println("날짜 전달 확인 : " + end);
 		Project p = new Project(title,type,category,subcategory_ch,description,cost,writeDate1,writeDate2,go,conf1,conf2);
 		System.out.println("프로젝트 확인 : " + p);
 		
-		projectService ps = new projectService();
+		ProjectService ps = new ProjectService();
 		
 		try {
 			ps.insertProject(p);

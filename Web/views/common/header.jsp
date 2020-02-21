@@ -19,8 +19,8 @@
  <nav id=nav2>
         <ul>
             <li class="logo"><a href = "/semi/mainpage.jsp" style="padding:0px;"><img src="/semi/images/win_win.png"></a></li>
-            <li><a href ="/semi/Project/projectFind.jsp">프로젝트 찾기</a></li>
-            <li><a href ="/semi/Project/developer.jsp">개발자 찾기</a></li>
+            <li><a href ="plist.do?currentPage=1">프로젝트 찾기</a></li>
+            <li><a href ="/semi/dlist.do">개발자 찾기</a></li>
             <li><a href ="/semi/Project/signupProject.jsp">프로젝트 등록</a></li>
             <li><a href ="#">이용방법</a></li>
             <%if(m==null){ %>

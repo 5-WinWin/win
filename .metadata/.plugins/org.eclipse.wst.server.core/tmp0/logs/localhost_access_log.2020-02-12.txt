@@ -1,0 +1,6 @@
+127.0.0.1 - - [12/Feb/2020:09:28:43 +0900] "GET / HTTP/1.1" 404 750
+0:0:0:0:0:0:0:1 - - [12/Feb/2020:09:28:44 +0900] "GET /semi/ HTTP/1.1" 200 2744
+0:0:0:0:0:0:0:1 - - [12/Feb/2020:09:28:44 +0900] "GET /semi/resources/css/mainpagecss.css HTTP/1.1" 200 2757
+0:0:0:0:0:0:0:1 - - [12/Feb/2020:09:28:44 +0900] "GET /semi/resources/images/win_win.png HTTP/1.1" 200 4101
+0:0:0:0:0:0:0:1 - - [12/Feb/2020:09:28:44 +0900] "GET /semi/resources/images/winwinlogo.jpg HTTP/1.1" 200 598155
+127.0.0.1 - - [12/Feb/2020:09:29:33 +0900] "GET / HTTP/1.1" 404 750

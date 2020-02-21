@@ -24,6 +24,59 @@ public class Project implements Serializable {
 	private int cno; // 기업 번호
 	private String conf1; // 예산 협의
 	private String conf2; // 착수 일자 협의
+	private int count; // 등록자 현황
+	private String cname; // 회사명
+	
+
+	public String getCname() {
+		return cname;
+	}
+
+	public void setCname(String cname) {
+		this.cname = cname;
+	}
+
+	/**
+	 * 프로젝트 리스트 열람용
+	 * @param penroll
+	 * @param ptitle
+	 * @param pbang
+	 * @param ptype
+	 * @param pcotx
+	 * @param pcost
+	 * @param pstart
+	 * @param pend
+	 * @param pgo
+	 * @param count
+	 */
+	public Project(Date penroll, String ptitle, String pbang, String ptype, String pcotx, int pcost, Date pstart,
+			Date pend, String pgo, int count) {
+		super();
+		this.penroll = penroll;
+		this.ptitle = ptitle;
+		this.pbang = pbang;
+		this.ptype = ptype;
+		this.pcotx = pcotx;
+		this.pcost = pcost;
+		this.pstart = pstart;
+		this.pend = pend;
+		this.pgo = pgo;
+		this.count = count;
+	}
+
+	/**
+	 * 프로젝트 등록용1
+	 * @param ptitle
+	 * @param pbang
+	 * @param ptype
+	 * @param pdetail
+	 * @param pcotx
+	 * @param pstart
+	 * @param pend
+	 * @param pgo
+	 * @param conf1
+	 * @param conf2
+	 */
 	public Project(String ptitle, String pbang, String ptype, String pdetail, String pcotx, Date pstart, Date pend,
 			String pgo, String conf1, String conf2) {
 		super();
@@ -39,6 +92,24 @@ public class Project implements Serializable {
 		this.conf2 = conf2;
 	}
 	
+	public Project() {
+		super();
+	}
+
+	/**
+	 * 프로젝트 등록용2
+	 * @param ptitle
+	 * @param pbang
+	 * @param ptype
+	 * @param pdetail
+	 * @param pcotx
+	 * @param pcost
+	 * @param pstart
+	 * @param pend
+	 * @param pgo
+	 * @param conf1
+	 * @param conf2
+	 */
 	public Project(String ptitle, String pbang, String ptype, String pdetail, String pcotx, int pcost, Date pstart,
 			Date pend, String pgo, String conf1, String conf2) {
 		super();
@@ -193,6 +264,13 @@ public class Project implements Serializable {
 	}
 	public void setCno(int cno) {
 		this.cno = cno;
+	}
+	public int getCount() {
+		return count;
+	}
+	
+	public void setCount(int count) {
+		this.count = count;
 	}
 	
 
